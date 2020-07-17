@@ -1,17 +1,26 @@
 class RingBuffer:
-    def __init__(self, capacity, buffer = None):
+    def __init__(self, capacity):
         self.capacity = capacity
-        self.buffer = []
+        self.storage = [None]*capacity
+        self.point = 0
 
     def append(self, item):
-        #buffer = []
+        
         #if adding item to buffer > capacity overwrite oldest
-        if buffer.capacity == capacity:
-            buffer.replace(c in capacity, item) #go to front of buffer again
-        buffer.append(item)
+        if self.point < self.capacity:
+            old = self.storage.pop(self.point)
+            self.storage.insert(self.point, item)
+            print("After:", self.storage, "Remove item:", old)
+            self.point += 1
 
-        pass
+            if self.point == self.capacity:
+                self.point = 0
+
+            #list[point]
+            #append to place of pointer
+            #when capacity is reached start index over
 
     def get(self):
-        return self.buffer
+
+        return [c for c in self.storage if c is not None]
         pass
