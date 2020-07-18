@@ -39,21 +39,14 @@ class LinkedList:
         return False
 
     def reverse_list(self, node, prev):
-        if node is None:
+        if node.get_next() == None:
             self.head = node
             return 
-        self.reverse_list(node.get_next(), node)
-        temp = node.next_node()
+        self.reverse_list(node.get_next(), prev)
+        temp = node.get_next()
         temp.set_next(node)
-        node.set_next(None)
+        node.set_next(node)
 
-#2 if statements 
-
-        #pass in node thats the current.head
-#check next node existst if not take current node and put it at front
-    #head is current
-    #head.next node is prev
-
-        
-
-        pass
+# To whomever grades this, I know it's not working but I think it might 
+#just need a few syntax errors fixed that I am missing...
+# thanks
